@@ -1,0 +1,1 @@
+UPDATE `services_db`.`signature_cable` SET `hd_channel`='170' WHERE `signature_cable_id`='10';

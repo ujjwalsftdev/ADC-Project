@@ -1,0 +1,213 @@
+
+
+Payment Foreign Key:
+
+ALTER TABLE employee_db.payment
+
+ADD COLUMN customer_data_id INT(10) unsigned;
+
+
+
+ALTER TABLE employee_db.payment
+
+ADD constraint customer_data_id_fkey FOREIGN KEY (customer_data_id) REFERENCES customer_db.customer_data(customer_data_id);
+
+
+
+select * from employee_db.payment;
+
+select * from customer_db.customer_data;
+
+
+Foreign key State Table:
+
+ALTER TABLE customer_db.customer_data
+
+ADD COLUMN state_id INT(10) unsigned;
+
+
+
+ALTER TABLE customer_db.customer_data
+
+ADD constraint state_id_fkey FOREIGN KEY (state_id) REFERENCES customer_db.state(state_id);
+
+
+select * from customer_db.customer_data;
+
+select * from customer_db.state;
+
+
+Foreign Key Postcode Table:
+
+ALTER TABLE customer_db.postcode
+
+
+ADD COLUMN customer_data_id INT(10) unsigned;
+
+
+
+ALTER TABLE customer_db.postcode
+
+
+ADD constraint customer_postcode_fkey FOREIGN KEY (customer_data_id) REFERENCES customer_db.customer_data(customer_data_id);
+
+
+select * from customer_db.customer_data;
+select * from customer_db.postcode;
+
+
+
+
+Drop foreign keys not neccessary:
+
+alter table customer_db.customer_data
+
+drop foreign key payment_id_fkey;
+
+alter table customer_db.customer_data
+
+drop foreign key postcode_id_fkey;
+
+
+Internet Foreign Key on Customer Table:
+
+ALTER TABLE customer_db.customer_data
+
+
+ADD COLUMN internet_id INT(10) unsigned;
+
+
+
+ALTER TABLE customer_db.customer_data
+
+
+ADD constraint internet_id_fkey FOREIGN KEY (internet_id) REFERENCES services_db.internet(internet_id);
+
+
+select * from customer_db.customer_data;
+
+
+voip Foreign Key on Customer Table:
+
+ALTER TABLE customer_db.customer_data
+
+
+
+ADD COLUMN voip_id INT(10) unsigned;
+
+
+
+
+
+ALTER TABLE customer_db.customer_data
+
+
+
+ADD constraint voip_id_fkey FOREIGN KEY (voip_id) REFERENCES services_db.voip(voip_id);
+
+
+select * from customer_db.customer_data;
+
+tv Foreign Key on Customer Table:
+
+ALTER TABLE customer_db.customer_data
+
+ADD COLUMN tv_id INT(10) unsigned;
+
+
+
+ALTER TABLE customer_db.customer_data
+
+ADD constraint tv_id_fkey FOREIGN KEY (tv_id) REFERENCES services_db.tv(tv_id);
+
+
+
+
+
+select * from customer_db.customer_data;
+
+package Foreign Key on Customer Table:
+
+ALTER TABLE customer_db.customer_data
+
+ADD COLUMN package_id INT(10) unsigned;
+
+
+
+ALTER TABLE customer_db.customer_data
+
+ADD constraint package_id_fkey FOREIGN KEY (package_id) REFERENCES services_db.package(package_id);
+
+select * from customer_db.customer_data;
+
+
+Dropping foreign key on Employee Table:
+
+alter table employee_db.employee
+
+drop foreign key payment_emp_id_fkey;
+
+Creating Foreign key of Employee on Payment table:
+
+ALTER TABLE employee_db.payment
+
+ADD COLUMN employee_id INT(10) unsigned;
+
+
+
+ALTER TABLE employee_db.payment
+
+ADD constraint employee_id_fkey FOREIGN KEY (employee_id) REFERENCES employee_db.employee(employee_id);
+
+
+
+select * from employee_db.payment;
+
+Creating foreign key for state in Employee table:
+
+ALTER TABLE employee_db.employee
+
+ADD COLUMN state_id INT(10) unsigned;
+
+
+
+ALTER TABLE employee_db.employee
+
+ADD constraint state_emp_id_fkey FOREIGN KEY (state_id) REFERENCES customer_db.state(state_id);
+
+
+
+select * from employee_db.employee;
+
+
+Creating foreign key for postcode in Employee table:
+
+ALTER TABLE employee_db.employee
+
+ADD COLUMN postcode_id INT(10) unsigned;
+
+
+
+ALTER TABLE employee_db.employee
+
+ADD constraint postcode_emp_id_fkey FOREIGN KEY (postcode_id) REFERENCES customer_db.postcode(postcode_id);
+
+
+
+select * from employee_db.employee;
+
+Creating foreign key for company in Employee table:
+
+ALTER TABLE employee_db.employee
+
+ADD COLUMN company_id INT(10) unsigned;
+
+
+
+ALTER TABLE employee_db.employee
+
+ADD constraint company_id_fkey FOREIGN KEY (company_id) REFERENCES employee_db.company(company_id);
+
+
+
+select * from employee_db.employee;

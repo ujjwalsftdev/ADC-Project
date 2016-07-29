@@ -1,0 +1,1 @@
+select first_name from customer_db.customer_data;
